@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { db } from "../firebase-config";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from "firebase/firestore";
+import NavBar from "../components/NavBar";
 
 const TestPage = () => {
 
@@ -41,20 +42,23 @@ const TestPage = () => {
     }
 
     return (
-        <div style={{marginTop: '8rem'}}>
-            <input placeholder="username" onChange={(e) => setNewName(e.target.value)} />
-            <input type="number" placeholder="age" onChange={(e) => setNewAge(e.target.value)} />
-            <button onClick={createUser}>Create user</button>
-            {users.map(
-                (user) => {
-                    return <>
-                        <h1>name: {user.username}</h1> <h1>password: {user.password}</h1> <h1>age: {user.age}</h1>
-                        <button onClick={() => updateUser(user.id, user.age)}>increment age</button>
-                        <button onClick={() => {deleteUser(user.id)}}>Delete user</button>
-                    </>
-                }
-            )}
-        </div>
+        <>
+            <NavBar />
+            <div style={{ marginTop: '8rem' }}>
+                <input placeholder="username" onChange={(e) => setNewName(e.target.value)} />
+                <input type="number" placeholder="age" onChange={(e) => setNewAge(e.target.value)} />
+                <button onClick={createUser}>Create user</button>
+                {users.map(
+                    (user) => {
+                        return <>
+                            <h1>name: {user.username}</h1> <h1>password: {user.password}</h1> <h1>age: {user.age}</h1>
+                            <button onClick={() => updateUser(user.id, user.age)}>increment age</button>
+                            <button onClick={() => { deleteUser(user.id) }}>Delete user</button>
+                        </>
+                    }
+                )}
+            </div>
+        </>
     )
 }
 

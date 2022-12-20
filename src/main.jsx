@@ -5,12 +5,10 @@ import TestPage from './pages/TestPage'
 import ProductPage from './pages/ProductPage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
-import NavBar from './components/NavBar'
 
 export default function App() {
   return (
     <BrowserRouter>
-      <NavBar/>
       <Routes>
         <Route path="/" element={<MainPage />}/>
         <Route path="/mbt" element={<TestPage/>}/>

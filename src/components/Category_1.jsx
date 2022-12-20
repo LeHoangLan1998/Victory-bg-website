@@ -1,37 +1,27 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
 
 const Category_1 = () => {
 
     return (
-        <Container style={{ margin: '60px auto' }}>
-            <Row>
-                <Col>
-                    <div className='container-custom'>
-                        <div className='image-darken'>
-                            <a href="#jackets">
-                                <Image fluid src='src\assets\jacket.jpg'></Image>
-                                <h2 className='centered text-unselectable '>Якета</h2>
-                            </a>
-                        </div>
+        <div style={{ backgroundColor: '#f4fafb', padding: "150px 60px", margin: "60px auto" }}>
+            <div className='container-custom'>
+                <h1 style={{ marginBottom: '60px' }}>Категории:</h1>
+                <div className="grid-category" direction="horizontal " gap={3}>
+                    <div>
+                        <a href="#jackets">
+                            <Image fluid src='src\assets\jacket.jpg' style={{maxHeight: '600px'}}></Image>
+                        </a>
                     </div>
-                </Col>
 
-
-                <Col>
-                    <div className='container-custom'>
-                        <div className='image-darken'>
-                            <a href="#trousers">
-                                <Image fluid src='src\assets\trousers.jpg'></Image>
-                                <h2 className='centered text-unselectable' >Панталони</h2>
-                            </a>
-                        </div>
+                    <div>
+                        <a href="#trousers">
+                            <Image fluid src='src\assets\trousers.jpg' style={{maxHeight: '600px'}}></Image>
+                        </a>
                     </div>
-                </Col>
-            </Row>
-        </Container>
+                    
+                </div>
+            </div>
+        </div>
     );
 }
 

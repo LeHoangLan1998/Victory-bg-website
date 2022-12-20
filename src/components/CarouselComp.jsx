@@ -1,8 +1,8 @@
-import Carousel from 'react-bootstrap/Carousel';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import { Button } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
 
 
 const CarouselComp = () => {
@@ -13,10 +13,10 @@ const CarouselComp = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
-        fade: true,
+        /* fade: true, */
         autoplay: true,
         autospeed: 1500,
-        pauseOnHover: true
+        /* pauseOnHover: true */
     };
 
     return (
@@ -24,12 +24,14 @@ const CarouselComp = () => {
             <Slider {...settings}>
 
 
-                <div className="carousel-1"></div>
+                {/* <div className="carousel-1"></div> */}
+                <Image fluid src="src\assets\pexels-neosiam-603022.jpg"></Image>
 
-                <div className="carousel-2"></div>
+                {/* <div className="carousel-2"></div */}
+                <Image fluid src="src\assets\pexels-kai-pilger-996329.jpg"></Image>
 
-
-                <div className="carousel-3"></div>
+                {/* <div className="carousel-3"></div> */}
+                <Image fluid src="src\assets\pexels-terje-sollie-298863.jpg"></Image>
 
             </Slider >
             <div className="flex-container" style={{ position: "absolute", top: "40%", width: '100%', flexDirection: "column" }}>

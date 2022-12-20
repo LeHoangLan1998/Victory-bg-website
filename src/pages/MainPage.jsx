@@ -7,12 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { db } from "../firebase-config";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import NavBar from '../components/NavBar';
 
 function MainPage() {
 
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
+  const [navBarScroll, setNavBarScroll] = useState(false);
   const usersCollectionRef = collection(db, "products")
-  
+
 
   useEffect(() => {
     const getProducts = async () => {
@@ -23,10 +25,24 @@ function MainPage() {
   }, []
   )
 
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavBarScroll(true);
+    }
+    else {
+      setNavBarScroll(false);
+    }  
+  }
+  useEffect(() => {
+    changeBackground()
+    // adding the event when scroll change Logo
+    window.addEventListener("scroll", changeBackground)
+  })
+
   return (
     <>
+      <NavBar dynamic="true" scrollState={navBarScroll} />
       <CarouselComp />
-
       <Category_1 />
 
       <div className='grid-container'>
@@ -42,6 +58,7 @@ function MainPage() {
                 length={product.length}
                 size={product.size}
                 id={product.id}
+                key={product.id}
               />
             )
           }

@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Image } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import NavBar from '../components/NavBar';
 
 const ProductPage = () => {
 
@@ -63,6 +64,8 @@ const ProductPage = () => {
             }
                 `}
             </style>
+
+            <NavBar/>
 
             <div className="grid-container-product" style={{ marginTop: '8rem' }}>
 
