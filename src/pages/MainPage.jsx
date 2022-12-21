@@ -41,7 +41,7 @@ function MainPage() {
 
   return (
     <>
-      <NavBar dynamic="true" scrollState={navBarScroll} />
+      <NavBar scrollState={navBarScroll} />
       <CarouselComp />
       <Category_1 />
 

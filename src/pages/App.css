@@ -106,3 +106,7 @@ img {
   font-weight: 500;
 }
 
+.custom-SearchBox{
+  max-width: 40vh;
+  margin: auto
+}

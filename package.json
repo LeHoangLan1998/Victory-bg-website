@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
+    "algoliasearch": "^4.14.3",
     "bootstrap": "^5.2.3",
     "firebase": "^9.15.0",
+    "instantsearch.css": "^7.4.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-instantsearch-hooks-web": "^6.38.1",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1"
   },

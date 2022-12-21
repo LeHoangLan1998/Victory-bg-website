@@ -31,14 +31,14 @@ const NavBar = (props) => {
             .bg-light {
                 background-color: #fff !important;
                 border-bottom: 1px solid black;
-                transition: background-color .3s ease-in-out,border-color .3s ease-in-out, filter .01s linear .3s;
+                transition: background-color .5s ease-in-out,border-color .5s ease-in-out, filter .01s linear .5s;
                 height: 82px;
                 padding-left: 15px;
             }
 
             .bg-none {
                 background-color: transparent;
-                transition: background-color .3s ease-in-out,border-color .3s ease-in-out, filter .01s linear .3s;
+                transition: background-color .5s ease-in-out,border-color .5s ease-in-out, filter .01s linear .5s;
                 height: 82px;
                 padding-left: 15px;
             }
