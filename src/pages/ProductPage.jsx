@@ -65,12 +65,12 @@ const ProductPage = () => {
                 `}
             </style>
 
-            <NavBar/>
+            <NavBar scrollState={true} />
 
             <div className="grid-container-product" style={{ marginTop: '8rem' }}>
 
                 <div style={{ padding: "40px" }}>
-                    <img src={`..\\src\\assets\\products\\${productData.imageRef}`} style={{ maxHeight:'100%', maxWidth:'100%' }}></img>
+                    <img src={`..\\src\\assets\\products\\${productData.imageRef}`} style={{ maxHeight: '100%', maxWidth: '100%' }}></img>
                 </div>
 
 

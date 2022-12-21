@@ -38,7 +38,7 @@ const CarouselComp = () => {
                 <p style={{ fontSize: "4rem" }}>Добре дошли на Victory</p>
                 <p style={{ fontSize: "2rem" }}>дънки, панталони и дрехи във всякакви размери</p>
                 <div>
-                    <Button variant="outline-light" size="lg" style={{ width: "15%" }}>ПАЗАРУВАЙТЕ СЕГА</Button>
+                    <Button variant="outline-light" size="lg" style={{ width: "15%" }} href="products">ПАЗАРУВАЙТЕ СЕГА</Button>
                 </div>
             </div>
 

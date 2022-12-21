@@ -37,6 +37,13 @@
   }
 }
 
+.grid-container-productList {
+  display: grid;
+  grid-template-columns: 240px auto;
+  gap: 10px;
+
+}
+
 .grid-container-product {
   display: grid;
   grid-auto-columns: minmax(0, 1fr);

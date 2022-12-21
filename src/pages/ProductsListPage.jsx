@@ -1,6 +1,6 @@
 import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, SearchBox, Hits, Highlight, RefinementList, Pagination, Configure } from "react-instantsearch-hooks-web";
-import 'instantsearch.css/themes/algolia-min.css';
+import 'instantsearch.css/themes/algolia.css';
 import Item from "../components/Item";
 import NavBar from "../components/NavBar";
 
@@ -9,24 +9,36 @@ const searchClient = algoliasearch("A1VDU6VM8X", "b6c97432f075a452e5f6d26bb16ae2
 
 
 const ProductsListPage = () => {
-
     return (
         <>
-            <NavBar scrollState={true}/>
-            <div style={{marginTop: "10vh"}}>
+            <style type="text/css">
+                {`
+            .ais-Hits-item {
+                width: 250px !important
+            }       
+                `}
+            </style>
+
+            <NavBar scrollState={true} />
+            <div style={{ marginTop: "15vh" }}>
                 <InstantSearch searchClient={searchClient} indexName="algolia-product-index">
                     {/* <Configure hitsPerPage={4}/> */}
                     <SearchBox searchAsYouType={false} placeholder="Търсете..." className="custom-SearchBox" />
-                    <div className="flex-container" style={{ marginTop: "80px" }}>
-                        <div>
+                    <div className="grid-container-productList" style={{ marginTop: "80px" }}>
+                        <div style={{ textAlign: "left", paddingLeft: "15px" }}>
+                            <p>Размери:</p>
                             <RefinementList attribute="size" />
                             <hr />
+                            <p>Цветове:</p>
                             <RefinementList attribute="color" />
                         </div>
 
-                        <div>
+                        <div style={{ marginLeft: '120px' }}>
                             <Hits hitComponent={Hit} />
-                            <Pagination />
+                            <div style={{ margin: '40px auto' }}>
+                                <Pagination />
+                            </div>
+
                         </div>
                     </div>
                 </InstantSearch>
