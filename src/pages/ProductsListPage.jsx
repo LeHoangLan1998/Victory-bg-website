@@ -14,8 +14,11 @@ const ProductsListPage = () => {
             <style type="text/css">
                 {`
             .ais-Hits-item {
-                width: 250px !important
-            }       
+                width: 300px !important;
+            }
+            .ais-Hits {
+                max-width: 1300px;
+            }
                 `}
             </style>
 
@@ -24,7 +27,7 @@ const ProductsListPage = () => {
                 <InstantSearch searchClient={searchClient} indexName="algolia-product-index">
                     {/* <Configure hitsPerPage={4}/> */}
                     <SearchBox searchAsYouType={false} placeholder="Търсете..." className="custom-SearchBox" />
-                    <div className="grid-container-productList" style={{ marginTop: "80px" }}>
+                    <div className="grid-container-productList" style={{ marginTop: "80px", marginLeft: "3rem", marginRight: "3rem"}}>
                         <div style={{ textAlign: "left", paddingLeft: "15px" }}>
                             <p>Размери:</p>
                             <RefinementList attribute="size" />
