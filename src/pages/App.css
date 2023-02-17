@@ -22,7 +22,7 @@
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 5%;
-  margin: auto 60px
+  margin: auto 60px 100px;
 }
 
 @media (max-width: 1000px) {

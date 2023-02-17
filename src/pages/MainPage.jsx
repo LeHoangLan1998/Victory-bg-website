@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { db } from "../firebase-config";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 function MainPage() {
 
@@ -64,6 +65,7 @@ function MainPage() {
           }
         )}
       </div>
+      <Footer/>
     </>
   )
 }
