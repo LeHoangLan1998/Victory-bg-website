@@ -35,7 +35,7 @@ const CarouselComp = () => {
 
             </Slider >
             <div className="flex-container" style={{ position: "absolute", top: "40%", width: '100%', flexDirection: "column" }}>
-                <p style={{ fontSize: "4rem" }}>Добре дошли на Victory</p>
+                <p style={{ fontSize: "4rem" }}>Добре дошли във <span className="carousel-title">Victory online!</span></p>
                 <p style={{ fontSize: "2rem" }}>дънки, панталони и дрехи във всякакви размери</p>
                 <div>
                     <Button variant="outline-light" size="lg" style={{ width: "15%" }} href="products">ПАЗАРУВАЙТЕ СЕГА</Button>
