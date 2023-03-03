@@ -1,0 +1,29 @@
+.carouselContainer {
+    color: #fff;
+    text-shadow: 2px 2px 3px rgb(33 33 33 / 50%);
+    position: relative;
+}
+
+.carousel1 {
+    background-image: url('src/assets/pexels-neosiam-603022.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 85vh;
+}
+
+.carousel2 {
+    background-image: url('src/assets/pexels-kai-pilger-996329.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 85vh;
+}
+
+.carousel3 {
+    background-image: url('src/assets/pexels-terje-sollie-298863.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 85vh;
+}

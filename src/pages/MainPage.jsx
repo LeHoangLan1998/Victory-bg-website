@@ -66,7 +66,6 @@ function MainPage() {
           }
         )}
       </div>
-
       <Footer/>
     </>
   )

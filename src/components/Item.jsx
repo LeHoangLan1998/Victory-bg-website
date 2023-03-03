@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 
-const Item = (props) => { 
+const Item = (props) => {
 
     //Popover config
     const popover = (
