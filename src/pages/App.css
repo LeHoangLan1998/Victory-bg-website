@@ -21,8 +21,8 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  column-gap: 5%;
-  margin: auto 60px;
+  gap: 5%;
+  margin: auto 60px 100px;
 }
 
 @media (max-width: 1000px) {
@@ -76,36 +76,6 @@ img {
 
 .slick-list {
   height: 85vh;
-}
-
-.carousel-1 {
-  background-image: url('src/assets/pexels-neosiam-603022.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 85vh;
-}
-
-.carousel-2 {
-  background-image: url('src/assets/pexels-kai-pilger-996329.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 85vh;
-}
-
-.carousel-3 {
-  background-image: url('src/assets/pexels-terje-sollie-298863.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 85vh;
-}
-
-.carousel-container {
-  color: #fff;
-  text-shadow: 2px 2px 3px rgb(33 33 33 / 50%);
-  position: relative;
 }
 
 .p-navbar{
