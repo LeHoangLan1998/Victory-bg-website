@@ -46,6 +46,7 @@ function MainPage() {
       <CarouselComp />
       <Category_1 />
 
+      <h1 style={{marginBottom: "30px"}}>Най-търсени продукти:</h1>
       <div className='grid-container'>
         {products.map(
           (product) => {
