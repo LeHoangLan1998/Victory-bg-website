@@ -21,8 +21,8 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  gap: 5%;
-  margin: auto 60px
+  column-gap: 5%;
+  margin: auto 60px;
 }
 
 @media (max-width: 1000px) {
@@ -116,4 +116,25 @@ img {
 .custom-SearchBox{
   max-width: 40vh;
   margin: auto
+}
+
+.carousel-title{
+  font-style: italic; 
+  font-family: "Satisfy";
+  font-size: 5.5rem;
+  text-shadow: 2px 2px 3px rgb(33 33 33 / 100%);
+}
+
+.footer-style{
+  border-top: 1px solid black;
+  /* margin-top: 50px; */
+}
+
+.footer-flex{
+  display: flex;
+  justify-content: center;
+}
+
+.footer-p{
+  margin: auto 20px;
 }
