@@ -1,0 +1,17 @@
+.grid-container-product {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 8rem;
+    min-height: 70%;
+  }
+
+  .image {
+    padding: 0 10%;
+    max-height: 80vh;
+  }
+
+  .details-container {
+    margin-right: 10%;
+    display: flex;
+    flex-direction: column;
+  }

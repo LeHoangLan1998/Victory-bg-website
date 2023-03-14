@@ -20,7 +20,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  margin: auto 60px 100px;
+  margin: auto 60px;
 }
 
 @media (max-width: 1000px) {
