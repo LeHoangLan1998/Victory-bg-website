@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { db } from "../firebase-config";
@@ -15,9 +14,10 @@ import {
 } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Image } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import NavBar from "../components/NavBar";
+import classes from "./ProductPage.module.css";
+import Footer from "../components/Footer";
 
 const ProductPage = () => {
   const [productData, setProductData] = useState({});
@@ -76,19 +76,20 @@ const ProductPage = () => {
       </style>
 
       <NavBar scrollState={true} />
+      {console.log(productData)}
 
-      <div className="grid-container-product" style={{ marginTop: "8rem" }}>
-        <div style={{ padding: "40px" }}>
+      <div className={classes["grid-container-product"]} style={{ marginTop: "8rem" }}>
+        <div className={classes.image}>
           <img
             src={`..\\src\\assets\\products\\${productData.imageRef}`}
             style={{ maxHeight: "100%", maxWidth: "100%" }}
           ></img>
         </div>
 
-        <div style={{ textAlign: "start" }}>
+        <div className={classes["details-container"]}>
           <h2>{productData.productName}</h2>
 
-          <hr></hr>
+          <hr />
 
           <h5>Състав и поддръжка:</h5>
           <ul>
@@ -115,32 +116,33 @@ const ProductPage = () => {
 
           <p>{productData.price} лв.</p>
 
-          <Row>
-            <h6>Размер:</h6>
-            <Col>
-              {productData.size
-                ? productData.size.map((singleSize) => {
-                    return (
-                      <Button
-                        variant="secondary"
-                        onClick={() => chooseSize(singleSize)}
-                        active={productSize[singleSize]}
-                      >
-                        {singleSize}
-                      </Button>
-                    );
-                  })
-                : null}
-            </Col>
 
-            <Col>
-              <Button variant="secondary" size="lg">
-                КУПИ
-              </Button>
-            </Col>
-          </Row>
+          <div>
+            <span>Размер: </span>
+            {productData.size
+              ? productData.size.map((singleSize) => {
+                return (
+                  <Button
+                    key={singleSize}
+                    variant="secondary"
+                    onClick={() => chooseSize(singleSize)}
+                    active={productSize[singleSize]}
+                  >
+                    {singleSize}
+                  </Button>
+                );
+              })
+              : null}
+          </div>
+
+          <div style={{marginTop: "auto"}}>
+            <Button variant="secondary" size="lg" onClick={() => console.log("zamn")}>
+              КУПИ
+            </Button>
+          </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

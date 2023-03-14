@@ -25,7 +25,7 @@ const ProductsListPage = () => {
   let { category } = useParams();
   let categoryName = ""
 
-  if(category) {
+  if (category) {
     switch (category) {
       case "male":
         categoryName = "Мъжки";
@@ -62,8 +62,9 @@ const ProductsListPage = () => {
         </style>
       }
 
-      <NavBar scrollState={true} />
-      <div style={{ marginTop: "15vh" }}>
+
+      <div style={{ marginTop: "5rem" }}>
+        <NavBar scrollState={true} />
         <InstantSearch
           searchClient={searchClient}
           indexName="algolia-product-index"
@@ -72,14 +73,18 @@ const ProductsListPage = () => {
             <Configure /* hitsPerPage={4} */ filters={`gender:${category}`} />
           ) : null}
 
-          <SearchBox
-            searchAsYouType={false}
-            placeholder="Търсете..."
-            className="custom-SearchBox"
-          />
           <h5>Категория {categoryName}</h5>
+
+          <div style={{ backgroundColor: "#f4fafb", padding: "3rem" }}>
+            <SearchBox
+              searchAsYouType={false}
+              placeholder="Търсете..."
+              className="custom-SearchBox"
+            />
+          </div>
+
           <CurrentRefinements />
-          
+
           <div
             className="grid-container-productList"
             style={{
