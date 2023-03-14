@@ -1,20 +1,48 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { GoSearch } from 'react-icons/go';
-import { RxPerson } from 'react-icons/rx';
-import logo from '../assets/Anh Logo.jpg';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { GoSearch } from "react-icons/go";
+import { RxPerson } from "react-icons/rx";
+import logo from "../assets/Anh Logo.jpg";
 
-import algoliasearch from "algoliasearch/lite";
-import { InstantSearch, SearchBox, Hits, Highlight, RefinementList, Pagination, Configure } from "react-instantsearch-hooks-web";
-const searchClient = algoliasearch("A1VDU6VM8X", "b6c97432f075a452e5f6d26bb16ae207")
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase-config";
+import { useNavigate } from "react-router-dom";
+import Offcanvas from "react-bootstrap/Offcanvas";
+
+/* import algoliasearch from "algoliasearch/lite";
+import {
+  InstantSearch,
+  SearchBox,
+  Hits,
+  Highlight,
+  RefinementList,
+  Pagination,
+  Configure,
+} from "react-instantsearch-hooks-web";
+const searchClient = algoliasearch(
+  "A1VDU6VM8X",
+  "b6c97432f075a452e5f6d26bb16ae207"
+); */
 
 const NavBar = (props) => {
+  const navigate = useNavigate();
 
-    return (
-        <>
-            <style type="text/css">
-                {`
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/");
+        console.log("Signed out successfully");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+  return (
+    <>
+      <style type="text/css">
+        {`
             .navbar-custom {
                 font-weight: 500;
                 /* text-transform: uppercase; */
@@ -47,36 +75,61 @@ const NavBar = (props) => {
                 padding-left: 15px;
             }
                 `}
-            </style>
+      </style>
 
-
-            <Navbar bg={props.scrollState ? "light" : "none"} expand="lg" variant={props.scrollState ? "light" : "custom"} fixed="top">
-                <Navbar.Brand href="/home">{/* VICTORY-BG */}
-                    <img src={logo} style={{ width: "65px", marginLeft: "15px", marginTop: "2px" }}></img>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Container>
-                        <Nav className="me-auto">
-                            <Nav.Link href="products"><p className="p-navbar">Мъжки дънки и панталони</p></Nav.Link>
-                            <Nav.Link href="products"><p className="p-navbar">Дамски дънки и панталони</p></Nav.Link>
-                            <Nav.Link href="products"><p className="p-navbar">Якета</p></Nav.Link>
-                            <Nav.Link href="products"><p className="p-navbar">Спортни стоки</p></Nav.Link>
-                            <Nav.Link href="products"><p className="p-navbar">Дамски блузи и аксесоари</p></Nav.Link>
-                            <Nav.Link href="products"><p className="p-navbar">Тестов route</p></Nav.Link>
-                        </Nav>
-                    </Container>
-                    {/* <InstantSearch searchClient={searchClient} indexName="algolia-product-index">
-                        <SearchBox searchAsYouType={false} placeholder="Търсете..." className="custom-SearchBox" />
-                    </InstantSearch> */}
-                    <Navbar.Brand href="products"><GoSearch /></Navbar.Brand>
-                    <Navbar.Brand href="account"><RxPerson /></Navbar.Brand>
-                </Navbar.Collapse>
-            </Navbar>
-
-        </>
-
-    );
-}
+      <Navbar
+        bg={props.scrollState ? "light" : "none"}
+        expand="lg"
+        variant={props.scrollState ? "light" : "custom"}
+        fixed="top"
+      >
+        <Container fluid>
+          <Navbar.Brand href="/home">
+            {/* VICTORY-BG */}
+            <img
+              src={logo}
+              style={{ width: "65px", marginLeft: "15px", marginTop: "2px" }}
+            ></img>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Offcanvas id="basic-navbar-nav" placement="end">
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav className="me-auto">
+                <Nav.Link href="/products/male">
+                  <p className="p-navbar">Мъжки дънки и панталони</p>
+                </Nav.Link>
+                <Nav.Link href="/products/female">
+                  <p className="p-navbar">Дамски дънки и панталони</p>
+                </Nav.Link>
+                <Nav.Link href="/products">
+                  <p className="p-navbar">Якета</p>
+                </Nav.Link>
+                <Nav.Link href="/products">
+                  <p className="p-navbar">Спортни стоки</p>
+                </Nav.Link>
+                <Nav.Link href="/products">
+                  <p className="p-navbar">Дамски блузи и аксесоари</p>
+                </Nav.Link>
+                <Nav.Link href="/products">
+                  <p className="p-navbar">Тестов route</p>
+                </Nav.Link>
+              </Nav>
+              <Navbar.Brand href="products">
+                <GoSearch />
+              </Navbar.Brand>
+              <Navbar.Brand href="signup">
+                <RxPerson />
+              </Navbar.Brand>
+              <button onClick={handleLogout}>Log out</button>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+        </Container>
+      </Navbar>
+    </>
+  );
+};
 
 export default NavBar;

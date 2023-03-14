@@ -1,9 +1,8 @@
 #root {
-  /* max-width: 1280px; */
-  /* width: 100vh; */
   margin: 0 auto;
-  /* padding: 2rem; */
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 /* custom css */
@@ -21,7 +20,6 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  gap: 5%;
   margin: auto 60px 100px;
 }
 
@@ -78,33 +76,33 @@ img {
   height: 85vh;
 }
 
-.p-navbar{
-  margin:0;
+.p-navbar {
+  margin: 0;
   font-weight: 500;
 }
 
-.custom-SearchBox{
+.custom-SearchBox {
   max-width: 40vh;
   margin: auto
 }
 
-.carousel-title{
-  font-style: italic; 
+.carousel-title {
+  font-style: italic;
   font-family: "Satisfy";
   font-size: 5.5rem;
   text-shadow: 2px 2px 3px rgb(33 33 33 / 100%);
 }
 
-.footer-style{
+.footer-style {
   border-top: 1px solid black;
   /* margin-top: 50px; */
 }
 
-.footer-flex{
+.footer-flex {
   display: flex;
   justify-content: center;
 }
 
-.footer-p{
+.footer-p {
   margin: auto 20px;
 }
