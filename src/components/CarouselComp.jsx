@@ -69,6 +69,7 @@ const CarouselComp = () => {
           top: "40%",
           width: "100%",
           flexDirection: "column",
+          pointerEvents: "none",
         }}
       >
         <p style={{ fontSize: "4rem" }}>
