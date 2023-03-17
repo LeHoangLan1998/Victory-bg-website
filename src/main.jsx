@@ -7,13 +7,16 @@ import ProductsListPage from "./pages/ProductsListPage";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+
 import "./index.css";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+      <Route path="/" element={<Layout/>}>
+        <Route index element={<MainPage />} />
         <Route path="/mbt" element={<TestPage />} />
         <Route path="/fbt" element={<ProductPage />} />
         <Route path="/products/" element={<ProductsListPage />} />
@@ -22,6 +25,7 @@ export default function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<MainPage />} />
+      </Route>
       </Routes>
     </BrowserRouter>
   );

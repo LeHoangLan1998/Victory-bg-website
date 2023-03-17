@@ -21,9 +21,8 @@ const searchClient = algoliasearch(
 );
 
 const ProductsListPage = () => {
-
   let { category } = useParams();
-  let categoryName = ""
+  let categoryName = "";
 
   if (category) {
     switch (category) {
@@ -39,8 +38,7 @@ const ProductsListPage = () => {
         categoryName = "";
         break;
     }
-  }
-  else {
+  } else {
     categoryName = "Всички";
   }
 
@@ -50,21 +48,29 @@ const ProductsListPage = () => {
         <style type="text/css">
           {`
             .ais-Hits-item {
-                width: 300px !important;
+                /* min-width: 300px !important; */
                 padding: 0;
                 border: 0;
                 text-align: left;
+                box-shadow: none !important;
             }
-            .ais-Hits {
-                max-width: 1300px;
+
+            .ais-Hits-list {
+              /* justify-content: center; */
             }
-                `}
+
+            .ais-Highlight-highlighted {
+              font-size: 13px;
+            }
+
+            .ais-Highlight-nonHighlighted {
+              font-size: 13px;
+            }
+          `}
         </style>
       }
 
-
-      <div style={{ marginTop: "5rem" }}>
-        <NavBar scrollState={true} />
+      <div style={{ /* marginTop: "5rem" */ borderStyle: "solid none none", borderWidth: "5rem"}}>
         <InstantSearch
           searchClient={searchClient}
           indexName="algolia-product-index"
@@ -73,9 +79,15 @@ const ProductsListPage = () => {
             <Configure /* hitsPerPage={4} */ filters={`gender:${category}`} />
           ) : null}
 
-          <h5>Категория {categoryName}</h5>
+          <h5 style={{ margin: "1.5rem" }}>Категория {categoryName}</h5>
 
-          <div style={{ backgroundColor: "#f4fafb", padding: "3rem" }}>
+          <div
+            style={{
+              backgroundColor: "#f4fafb",
+              padding: "3rem",
+              marginBottom: "2.5rem",
+            }}
+          >
             <SearchBox
               searchAsYouType={false}
               placeholder="Търсете..."
@@ -85,28 +97,17 @@ const ProductsListPage = () => {
 
           <CurrentRefinements />
 
-          <div
-            className="grid-container-productList"
-            style={{
-              marginTop: "80px",
-              marginLeft: "3rem",
-              marginRight: "3rem",
-            }}
-          >
-            <div style={{ textAlign: "left", paddingLeft: "15px" }}>
+          {/* <div>
               <p>Размери:</p>
               <RefinementList attribute="size" />
               <hr />
               <p>Цветове:</p>
               <RefinementList attribute="color" />
-            </div>
+            </div> */}
 
-            <div style={{ marginLeft: "120px" }}>
-              <Hits hitComponent={Hit} />
-              <div style={{ margin: "40px auto" }}>
-                <Pagination />
-              </div>
-            </div>
+          <Hits hitComponent={Hit} />
+          <div style={{ margin: "40px auto" }}>
+            <Pagination />
           </div>
         </InstantSearch>
       </div>
@@ -136,9 +137,15 @@ const Hit = ({ hit }) => {
         <a href={`/item/${hit.id}`} style={{ color: "black" }}>
           <img
             src={`\\src\\assets\\products\\${hit.imageRef}`}
-            style={{ maxWidth: "100%" }}
+            style={{ width: "100%" }}
           ></img>
-          <div style={{ display: "flex" }}>
+          <div
+            style={{
+              display: "flex",
+              textTransform: "uppercase",
+              fontSize: "13px",
+            }}
+          >
             <Highlight attribute="productName" hit={hit} />
             <span style={{ marginLeft: "auto" }}>{hit.price} лв.</span>
           </div>

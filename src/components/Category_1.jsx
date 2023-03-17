@@ -16,7 +16,7 @@ const Category_1 = () => {
             <a href="#jackets">
               <Image
                 fluid
-                src="src\assets\jacket.jpg"
+                src="src\assets\jacket.png"
                 style={{ maxHeight: "400px" }}
               ></Image>
             </a>
@@ -26,7 +26,7 @@ const Category_1 = () => {
             <a href="#trousers">
               <Image
                 fluid
-                src="src\assets\trousers.jpg"
+                src="src\assets\trousers.png"
                 style={{ maxHeight: "400px" }}
               ></Image>
             </a>
