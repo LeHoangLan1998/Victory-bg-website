@@ -16,11 +16,9 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase-config";
 import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
 
 function MainPage() {
   const [products, setProducts] = useState([]);
-  const [navBarScroll, setNavBarScroll] = useState(false);
   const usersCollectionRef = collection(db, "products");
 
   useEffect(() => {
@@ -31,40 +29,8 @@ function MainPage() {
     getProducts();
   }, []);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        // ...
-        console.log("uid", uid);
-      } else {
-        // User is signed out
-        // ...
-        console.log("user is logged out");
-      }
-    });
-  }, []);
-
-  //Navbar behaviour
-  const changeBackground = () => {
-    if (window.scrollY >= 80) {
-      setNavBarScroll(true);
-    } else {
-      setNavBarScroll(false);
-    }
-  };
-  useEffect(() => {
-    changeBackground();
-    // adding the event when scroll change Logo
-    window.addEventListener("scroll", changeBackground);
-  });
-  //
-
   return (
     <>
-      <NavBar scrollState={navBarScroll} />
       <CarouselComp />
       <Category_1 />
 
@@ -86,7 +52,6 @@ function MainPage() {
           );
         })}
       </div>
-      <Footer />
     </>
   );
 }

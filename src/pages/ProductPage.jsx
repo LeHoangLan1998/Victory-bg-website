@@ -75,7 +75,6 @@ const ProductPage = () => {
                 `}
       </style>
 
-      <NavBar scrollState={true} />
       {console.log(productData)}
 
       <div className={classes["grid-container-product"]} style={{ marginTop: "8rem" }}>

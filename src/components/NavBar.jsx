@@ -1,33 +1,21 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { GoSearch } from "react-icons/go";
-import { RxPerson } from "react-icons/rx";
+import { User, ShoppingCart, SignIn, SignOut } from "phosphor-react";
 import logo from "../assets/Anh Logo.jpg";
-
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { onAuthStateChanged } from "firebase/auth";
+import { useState, useEffect } from "react";
 
-/* import algoliasearch from "algoliasearch/lite";
-import {
-  InstantSearch,
-  SearchBox,
-  Hits,
-  Highlight,
-  RefinementList,
-  Pagination,
-  Configure,
-} from "react-instantsearch-hooks-web";
-const searchClient = algoliasearch(
-  "A1VDU6VM8X",
-  "b6c97432f075a452e5f6d26bb16ae207"
-); */
-
-const NavBar = (props) => {
+const NavBar = () => {
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [navBarScroll, setNavBarScroll] = useState(false);
 
+  //Authentication
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
@@ -37,8 +25,40 @@ const NavBar = (props) => {
       })
       .catch((error) => {
         // An error happened.
+        console.log(error);
       });
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const email = user.email;
+        // ...
+        setUsername(email);
+      } else {
+        // User is signed out
+        // ...
+        console.log("user is logged out");
+      }
+    });
+  }, []);
+
+  //Navbar behaviour
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavBarScroll(true);
+    } else {
+      setNavBarScroll(false);
+    }
+  };
+  useEffect(() => {
+    changeBackground();
+    // adding the event when scroll change Logo
+    window.addEventListener("scroll", changeBackground);
+  });
+  //
   return (
     <>
       <style type="text/css">
@@ -78,14 +98,13 @@ const NavBar = (props) => {
       </style>
 
       <Navbar
-        bg={props.scrollState ? "light" : "none"}
+        bg={navBarScroll ? "light" : "none"}
         expand="lg"
-        variant={props.scrollState ? "light" : "custom"}
+        variant={navBarScroll ? "light" : "custom"}
         fixed="top"
       >
         <Container fluid>
           <Navbar.Brand href="/home">
-            {/* VICTORY-BG */}
             <img
               src={logo}
               style={{ width: "65px", marginLeft: "15px", marginTop: "2px" }}
@@ -117,13 +136,33 @@ const NavBar = (props) => {
                   <p className="p-navbar">Тестов route</p>
                 </Nav.Link>
               </Nav>
-              <Navbar.Brand href="products">
-                <GoSearch />
-              </Navbar.Brand>
+
+              {username !== "" ? (
+                <Navbar.Text>{`Добре дошли ${username}!`}</Navbar.Text>
+              ) : null}
+
               <Navbar.Brand href="signup">
-                <RxPerson />
+                <User size="2rem" />
               </Navbar.Brand>
-              <button onClick={handleLogout}>Log out</button>
+
+              <Navbar.Brand href="products">
+                <ShoppingCart size="2rem" />
+              </Navbar.Brand>
+
+              {username === "" ? (
+                <Navbar.Brand href="login">
+                  {""}
+                  <SignIn size="2rem" />
+                </Navbar.Brand>
+              ) : (
+                <Navbar.Brand>
+                  <SignOut
+                    size="2rem"
+                    onClick={handleLogout}
+                    style={{ cursor: "pointer" }}
+                  />
+                </Navbar.Brand>
+              )}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
