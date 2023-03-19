@@ -1,0 +1,31 @@
+.hit-container img {
+  transition: transform .4s ease-in-out;
+}
+
+.hit-container img:hover {
+  transform: scale(1.2);
+}
+
+.hit-container span {
+  z-index: 1;
+}
+
+.hit-container img+div {
+  color:black;
+}
+
+.hit-container img:hover+div {
+  font-weight: 500;
+  flex-direction: column;
+  text-align: center;
+}
+
+.hit-container {
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.zamn {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}

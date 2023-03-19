@@ -4,8 +4,11 @@ import classes from "./CarouselComp.module.css";
 
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
+import { useNavigate } from "react-router";
 
 const CarouselComp = () => {
+  const navigate = useNavigate();
+
   //keen-slider
   const [sliderRef] = useKeenSlider(
     {
@@ -23,7 +26,7 @@ const CarouselComp = () => {
           if (mouseOver) return;
           timeout = setTimeout(() => {
             slider.next();
-          }, 3000);
+          }, 9000);
         }
         slider.on("created", () => {
           slider.container.addEventListener("mouseover", () => {
@@ -83,8 +86,8 @@ const CarouselComp = () => {
           <Button
             variant="outline-light"
             size="lg"
-            style={{ width: "15%" }}
-            href="products"
+            style={{ width: "15%", pointerEvents: "auto", }}
+            onClick={()=> {navigate("/products")}}
           >
             ПАЗАРУВАЙТЕ СЕГА
           </Button>

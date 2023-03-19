@@ -10,10 +10,12 @@ import {
   CurrentRefinements,
 } from "react-instantsearch-hooks-web";
 import "instantsearch.css/themes/algolia.css";
-import NavBar from "../components/NavBar";
 import Popover from "react-bootstrap/Popover";
 import { OverlayTrigger } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { SquaresFour } from "phosphor-react";
+import classes from "./ProductsListPage.module.css";
+import { useState } from "react";
 
 const searchClient = algoliasearch(
   "A1VDU6VM8X",
@@ -21,6 +23,7 @@ const searchClient = algoliasearch(
 );
 
 const ProductsListPage = () => {
+  const [gridColumns, setGridColumns] = useState(4);
   let { category } = useParams();
   let categoryName = "";
 
@@ -42,6 +45,25 @@ const ProductsListPage = () => {
     categoryName = "Всички";
   }
 
+  const handleGridColumns = () => {
+    switch (gridColumns) {
+      case 4:
+        setGridColumns(6);
+        break;
+
+      case 6:
+        setGridColumns(8);
+        break;
+
+      case 8:
+        setGridColumns(4);
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       {
@@ -53,10 +75,12 @@ const ProductsListPage = () => {
                 border: 0;
                 text-align: left;
                 box-shadow: none !important;
+                width: auto;
             }
 
             .ais-Hits-list {
-              /* justify-content: center; */
+              display: grid;
+              grid-template-columns: repeat(${gridColumns}, 1fr)
             }
 
             .ais-Highlight-highlighted {
@@ -70,16 +94,20 @@ const ProductsListPage = () => {
         </style>
       }
 
-      <div style={{ /* marginTop: "5rem" */ borderStyle: "solid none none", borderWidth: "5rem"}}>
+      <div style={{ borderStyle: "solid none none", borderWidth: "5rem" }}>
         <InstantSearch
           searchClient={searchClient}
           indexName="algolia-product-index"
         >
           {category ? (
-            <Configure /* hitsPerPage={4} */ filters={`gender:${category}`} />
+            <Configure /* hitsPerPage={4} */ filters={`category:${category}`} />
           ) : null}
 
-          <h5 style={{ margin: "1.5rem" }}>Категория {categoryName}</h5>
+          <h1 style={{ margin: "1.5rem", fontWeight: "100" }}>
+            Категория {categoryName}
+          </h1>
+
+          <SquaresFour onClick={handleGridColumns} />
 
           <div
             style={{
@@ -116,6 +144,7 @@ const ProductsListPage = () => {
 };
 
 const Hit = ({ hit }) => {
+  const navigate = useNavigate();
   //Popover config
   const popover = (
     <Popover id="popover-basic">
@@ -134,11 +163,14 @@ const Hit = ({ hit }) => {
   return (
     <>
       <OverlayTrigger placement="auto" overlay={popover}>
-        <a href={`/item/${hit.id}`} style={{ color: "black" }}>
+        <div
+          onClick={() => navigate(`/item/${hit.id}`)}
+          className={classes["hit-container"]}
+        >
           <img
             src={`\\src\\assets\\products\\${hit.imageRef}`}
             style={{ width: "100%" }}
-          ></img>
+          />
           <div
             style={{
               display: "flex",
@@ -149,7 +181,7 @@ const Hit = ({ hit }) => {
             <Highlight attribute="productName" hit={hit} />
             <span style={{ marginLeft: "auto" }}>{hit.price} лв.</span>
           </div>
-        </a>
+        </div>
       </OverlayTrigger>
     </>
   );
