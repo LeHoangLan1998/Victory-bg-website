@@ -3,6 +3,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 /* custom css */
@@ -78,7 +79,6 @@ img {
 
 .p-navbar {
   margin: 0;
-  font-weight: 500;
 }
 
 .custom-SearchBox {

@@ -1,0 +1,65 @@
+.container {
+  border-style: solid none none;
+  border-width: 5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  text-align: left;
+}
+
+.subContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 6rem;
+  gap: 5rem;
+}
+
+.fieldHolder {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+input {
+  border: 0;
+  border-bottom: 1px solid #dfdfdf;
+  outline: none;
+}
+
+label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  cursor: text;
+  transition: .3s ease-in-out;
+}
+
+input,
+label {
+  font-size: 1em;
+  width: 100%;
+  height: 40px;
+}
+
+.container input.password:focus+label,
+.container input.password:valid+label {
+  color: #424242;
+  font-size: .75em;
+  top: -25px;
+  pointer-events: none;
+}
+
+.container input.email:focus+label,
+.container input.emailInput+label {
+  color: #424242;
+  font-size: .75em;
+  top: -25px;
+  pointer-events: none;
+}
+
+.container input:focus,
+.container input:valid {
+  border-bottom: 2px solid #424242;
+}

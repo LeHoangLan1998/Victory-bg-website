@@ -1,6 +1,6 @@
 import Image from "react-bootstrap/Image";
 
-const Category_1 = () => {
+const NewestProducts = () => {
   return (
     <div
       style={{
@@ -10,7 +10,7 @@ const Category_1 = () => {
       }}
     >
       <div className="container-custom">
-        <h1 style={{ marginBottom: "60px" }}>Нови артикули:</h1>
+        <h2 style={{ marginBottom: "60px", fontWeight: "100" }}>Нови артикули:</h2>
         <div className="grid-category" direction="horizontal " gap={3}>
           <div>
             <a href="#jackets">
@@ -37,4 +37,4 @@ const Category_1 = () => {
   );
 };
 
-export default Category_1;
+export default NewestProducts;
