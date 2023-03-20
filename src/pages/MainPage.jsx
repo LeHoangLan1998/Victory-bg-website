@@ -48,7 +48,7 @@ function MainPage() {
           <p>Телефон за връзка: +359 884 35 35 89</p>
         </div>
       </div>
-      <NewestProducts/>
+      <NewestProducts products={products}/>
 
       <h2 style={{ marginBottom: "30px", fontWeight: "100" }}>
         Най-търсени продукти:

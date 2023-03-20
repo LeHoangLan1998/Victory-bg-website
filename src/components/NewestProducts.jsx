@@ -3,28 +3,29 @@ import classes from "./NewestProducts.module.css";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useState } from "react";
-import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
-import { db } from "../firebase-config";
 
-const NewestProducts = () => {
-  const usersCollectionRef = collection(db, "products");
-  const [sliderRef] = useKeenSlider({
+const NewestProducts = (props) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [sliderRef, instanceRef] = useKeenSlider({
     slides: {
       perView: 3,
       spacing: 15,
     },
+    initial: 0,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
   });
 
-  const [products, setProducts] = useState([]);
+  const [products, setproducts] = useState([]);
 
   useEffect(() => {
-    const q = query(usersCollectionRef, orderBy("DateAdded", "desc"), limit(5));
-    const getProducts = async () => {
-      const data = await getDocs(q, usersCollectionRef);
-      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getProducts();
-  }, []);
+    setproducts(props.products);
+  }, [props.products]);
 
   return (
     <div className={classes.container}>
@@ -35,19 +36,70 @@ const NewestProducts = () => {
         </h2>
 
         {products.length !== 0 ? (
-          <div ref={sliderRef} className="keen-slider">
-            {products.map((item) => {
-              return (
-                <div className="keen-slider__slide number-slide1" key={item.id}>
-                  <Item data={item} />
-                </div>
-              );
-            })}
+          <div className={classes["navigation-wrapper"]}>
+
+            <div ref={sliderRef} className="keen-slider">
+              {products.map((item) => {
+                return (
+                  <div
+                    className="keen-slider__slide number-slide1"
+                    key={item.id}
+                  >
+                    <Item data={item} />
+                  </div>
+                );
+              })}
+            </div>
+
+            {loaded && instanceRef.current && (
+              <>
+                <Arrow
+                  left
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.prev()
+                  }
+                  disabled={currentSlide === 0}
+                />
+
+                <Arrow
+                  onClick={(e) =>
+                    e.stopPropagation() || instanceRef.current?.next()
+                  }
+                  disabled={
+                    currentSlide ===
+                    instanceRef.current.track.details.slides.length - 1
+                  }
+                />
+              </>
+            )}
+
           </div>
         ) : null}
+        
       </div>
     </div>
   );
 };
 
 export default NewestProducts;
+
+function Arrow(props) {
+  const disabeld = props.disabled ? classes["arrow--disabled"] : "";
+  return (
+    <svg
+      onClick={props.onClick}
+      className={`${classes.arrow} ${
+        props.left ? classes["arrow--left"] : classes["arrow--right"]
+      } ${disabeld}`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      {props.left && (
+        <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+      )}
+      {!props.left && (
+        <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+      )}
+    </svg>
+  );
+}
