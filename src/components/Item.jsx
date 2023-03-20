@@ -1,36 +1,49 @@
-import Card from "react-bootstrap/Card";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
+import classes from "./Item.module.css";
 
 const Item = (props) => {
+  const navigate = useNavigate();
+  const [data, setdata] = useState({});
+  useEffect(() => {
+    props.data ? setdata(props.data) : null;
+  }, []);
+
   //Popover config
   const popover = (
     <Popover id="popover-basic">
-      <Popover.Header as="h3">{props.title}</Popover.Header>
+      <Popover.Header as="h3">{data.title}</Popover.Header>
       <Popover.Body>
         <ul>
-          <li>Материя: {props.material}</li>
-          <li>Цвят: {props.color}</li>
-          <li>Дължина: {props.length}</li>
-          <li>Цена: {props.price}</li>
-          <li>Размери: {props.size}</li>
+          <li>Материя: {data.material}</li>
+          <li>Цвят: {data.color}</li>
+          <li>Дължина: {data.length}</li>
+          <li>Цена: {data.price}</li>
+          <li>Размери: {data.size}</li>
         </ul>
       </Popover.Body>
     </Popover>
   );
 
   return (
-    <Card border="light">
-      <OverlayTrigger placement="auto" overlay={popover}>
-        <a href={`/item/${props.id}`} style={{ color: "black" }}>
-          <Card.Img variant="top" src={props.src} />
-          <Card.Body>
-            <Card.Title>{props.title}</Card.Title>
-            <Card.Text>{`${props.price} лв.`}</Card.Text>
-          </Card.Body>
-        </a>
-      </OverlayTrigger>
-    </Card>
+    <OverlayTrigger placement="auto" overlay={popover}>
+      <div
+        className={classes.item}
+        onClick={() => navigate(`/item/${data.id}`)}
+      >
+        <img
+          src={`\\src\\assets\\products\\${data.imageRef}`}
+          style={{ width: "100%" }}
+        />
+
+        <div className={classes["item-label"]}>
+          <div>{data.productName}</div>
+          <span style={{ marginLeft: "auto" }}>{data.price} лв.</span>
+        </div>
+      </div>
+    </OverlayTrigger>
   );
 };
 

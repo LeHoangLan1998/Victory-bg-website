@@ -14,6 +14,7 @@ import {
   onSnapshot,
   query,
   orderBy,
+  limit,
 } from "firebase/firestore";
 import classes from "./MainPage.module.css";
 import { HandCoins, ArrowUDownLeft, PhoneCall } from "@phosphor-icons/react";
@@ -23,7 +24,7 @@ function MainPage() {
   const usersCollectionRef = collection(db, "products");
 
   useEffect(() => {
-    const q = query(usersCollectionRef, orderBy("DateAdded", "desc"));
+    const q = query(usersCollectionRef, orderBy("DateAdded", "desc"), limit(5));
     const getProducts = async () => {
       const data = await getDocs(q, usersCollectionRef);
       setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -47,26 +48,14 @@ function MainPage() {
           <p>Телефон за връзка: +359 884 35 35 89</p>
         </div>
       </div>
-      <NewestProducts />
+      <NewestProducts/>
 
       <h2 style={{ marginBottom: "30px", fontWeight: "100" }}>
         Най-търсени продукти:
       </h2>
       <div className="grid-container">
         {products.map((product) => {
-          return (
-            <Item
-              src={`src\\assets\\products\\${product.imageRef}`}
-              title={product.productName}
-              price={product.price}
-              material={product.material}
-              color={product.color}
-              length={product.length}
-              size={product.size}
-              id={product.id}
-              key={product.id}
-            />
-          );
+          return <Item data={product} key={product.id} />;
         })}
       </div>
     </>
