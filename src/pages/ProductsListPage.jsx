@@ -24,6 +24,7 @@ const searchClient = algoliasearch(
 
 const ProductsListPage = () => {
   const [gridColumns, setGridColumns] = useState(4);
+  const [refinementWindow, setRefinementWindow] = useState(false);
   let { category } = useParams();
   let categoryName = "";
 
@@ -90,6 +91,15 @@ const ProductsListPage = () => {
             .ais-Highlight-nonHighlighted {
               font-size: 13px;
             }
+
+            .ais-Pagination-item--selected .ais-Pagination-link {
+              background-color: black;
+              border-color: black;
+            }
+
+            .ais-CurrentRefinements {
+              justify-content: center;
+            }
           `}
         </style>
       }
@@ -107,7 +117,28 @@ const ProductsListPage = () => {
             Категория {categoryName}
           </h1>
 
-          <SquaresFour onClick={handleGridColumns} />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row-reverse",
+              gap: ".7rem",
+              marginRight: "1rem",
+            }}
+          >
+            <SquaresFour onClick={handleGridColumns} size="32" />
+            <div
+              style={{
+                border: "2px solid black",
+                cursor: "pointer",
+                padding: "1px 3px",
+              }}
+              onClick={() => {
+                setRefinementWindow(!refinementWindow);
+              }}
+            >
+              Филтри
+            </div>
+          </div>
 
           <div
             style={{
@@ -123,15 +154,23 @@ const ProductsListPage = () => {
             />
           </div>
 
-          <CurrentRefinements />
+          <div
+            style={{
+              position: "relative",
+              zIndex: refinementWindow ? 1 : -1,
+              height: refinementWindow ? "auto" : "0px",
+            }}
+          >
+            <p>Размери:</p>
+            <RefinementList attribute="size" />
+            <hr />
+            <p>Цветове:</p>
+            <RefinementList attribute="color" />
+          </div>
 
-          {/* <div>
-              <p>Размери:</p>
-              <RefinementList attribute="size" />
-              <hr />
-              <p>Цветове:</p>
-              <RefinementList attribute="color" />
-            </div> */}
+          <div style={{ marginBottom: "2rem" }}>
+            <CurrentRefinements />
+          </div>
 
           <Hits hitComponent={Hit} />
           <div style={{ margin: "40px auto" }}>
@@ -154,7 +193,7 @@ const Hit = ({ hit }) => {
           <li>Цвят: {hit.color}</li>
           <li>Дължина: {hit.length}</li>
           <li>Цена: {hit.price}</li>
-          <li>Размери: {hit.size}</li>
+          <li>Размери: {hit.size.join(", ")}</li>
         </ul>
       </Popover.Body>
     </Popover>
@@ -166,7 +205,7 @@ const Hit = ({ hit }) => {
           onClick={() => navigate(`/item/${hit.id}`)}
           className={classes["hit-container"]}
         >
-          <div style={{overflow: "hidden"}}>
+          <div style={{ overflow: "hidden" }}>
             <img
               src={`\\src\\assets\\products\\${hit.imageRef}`}
               style={{ width: "100%" }}
@@ -177,7 +216,7 @@ const Hit = ({ hit }) => {
               display: "flex",
               textTransform: "uppercase",
               fontSize: "13px",
-              color:"black",
+              color: "black",
             }}
           >
             <Highlight attribute="productName" hit={hit} />

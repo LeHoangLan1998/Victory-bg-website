@@ -73,7 +73,7 @@ const Signup = () => {
             <label htmlFor="password">Парола</label>
           </div>
           <Button type="submit" variant="outline-dark" size="lg">
-            Започнете сесия
+            Регистрирайте се
           </Button>
         </form>
         <div>

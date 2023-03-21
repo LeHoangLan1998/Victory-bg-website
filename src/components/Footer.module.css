@@ -10,3 +10,14 @@
     padding: 3em;
     margin-top: auto;
 }
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    align-items:flex-start;
+}
