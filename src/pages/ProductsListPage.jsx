@@ -148,7 +148,6 @@ const Hit = ({ hit }) => {
   //Popover config
   const popover = (
     <Popover id="popover-basic">
-      <Popover.Header as="h3">{hit.productName}</Popover.Header>
       <Popover.Body>
         <ul>
           <li>Материя: {hit.material}</li>
@@ -167,15 +166,18 @@ const Hit = ({ hit }) => {
           onClick={() => navigate(`/item/${hit.id}`)}
           className={classes["hit-container"]}
         >
-          <img
-            src={`\\src\\assets\\products\\${hit.imageRef}`}
-            style={{ width: "100%" }}
-          />
+          <div style={{overflow: "hidden"}}>
+            <img
+              src={`\\src\\assets\\products\\${hit.imageRef}`}
+              style={{ width: "100%" }}
+            />
+          </div>
           <div
             style={{
               display: "flex",
               textTransform: "uppercase",
               fontSize: "13px",
+              color:"black",
             }}
           >
             <Highlight attribute="productName" hit={hit} />

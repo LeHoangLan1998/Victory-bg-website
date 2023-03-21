@@ -18,19 +18,22 @@ import {
 } from "firebase/firestore";
 import classes from "./MainPage.module.css";
 import { HandCoins, ArrowUDownLeft, PhoneCall } from "@phosphor-icons/react";
+import ProductsListPage from "./ProductsListPage";
 
-function MainPage() {
-  const [products, setProducts] = useState([]);
-  const usersCollectionRef = collection(db, "products");
+function MainPage(props) {
+  /* const [products, setProducts] = useState([]);
+  const usersCollectionRef = collection(db, "products"); */
 
-  useEffect(() => {
+ /*  useEffect(() => {
     const q = query(usersCollectionRef, orderBy("DateAdded", "desc"), limit(5));
     const getProducts = async () => {
       const data = await getDocs(q, usersCollectionRef);
       setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
-    getProducts();
-  }, []);
+    if (products.length === 0) {
+      getProducts();
+    }
+  }, []); */
 
   return (
     <>
@@ -48,16 +51,18 @@ function MainPage() {
           <p>Телефон за връзка: +359 884 35 35 89</p>
         </div>
       </div>
-      <NewestProducts products={products}/>
 
-      <h2 style={{ marginBottom: "30px", fontWeight: "100" }}>
+      <NewestProducts products={props.firestoreData} />
+
+      {/* <h2 style={{ marginBottom: "30px", fontWeight: "100" }}>
         Най-търсени продукти:
-      </h2>
-      <div className="grid-container">
+      </h2> */}
+      {/* <div className="grid-container">
         {products.map((product) => {
           return <Item data={product} key={product.id} />;
         })}
-      </div>
+      </div> */}
+      <ProductsListPage />
     </>
   );
 }
