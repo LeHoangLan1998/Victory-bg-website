@@ -21,11 +21,11 @@ const NewestProducts = (props) => {
     },
   });
 
-  const [products, setproducts] = useState([]);
+  /* const [products, setproducts] = useState([]);
 
-  useEffect(() => {
-    setproducts(props.products);
-  }, [props.products]);
+  setproducts(props.products); */
+
+  const products = props.products;
 
   return (
     <div className={classes.container}>
@@ -35,9 +35,8 @@ const NewestProducts = (props) => {
           Нови артикули:
         </h2>
 
-        {products.length !== 0 ? (
+        {products && products.length !== 0 ? (
           <div className={classes["navigation-wrapper"]}>
-
             <div ref={sliderRef} className="keen-slider">
               {products.map((item) => {
                 return (
@@ -72,10 +71,8 @@ const NewestProducts = (props) => {
                 />
               </>
             )}
-
           </div>
         ) : null}
-        
       </div>
     </div>
   );
