@@ -31,9 +31,9 @@ const NewestProducts = (props) => {
     <div className={classes.container}>
       {console.log(products)}
       <div className={classes["container-custom"]}>
-        <h2 style={{ marginBottom: "60px", fontWeight: "100" }}>
+        <h1 style={{ marginBottom: "60px", fontWeight: "100" }}>
           Нови артикули:
-        </h2>
+        </h1>
 
         {products && products.length !== 0 ? (
           <div className={classes["navigation-wrapper"]}>
