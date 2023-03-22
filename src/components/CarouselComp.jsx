@@ -54,15 +54,15 @@ const CarouselComp = () => {
         style={{ maxHeight: "85vh" }}
       >
         <div className="keen-slider__slide">
-          <Image fluid src="src\assets\pexels-neosiam-603022.jpg"></Image>
+          <Image fluid src="src\assets\pexels-neosiam-603022.webp"></Image>
         </div>
 
         <div className="keen-slider__slide">
-          <Image fluid src="src\assets\pexels-kai-pilger-996329.jpg"></Image>
+          <Image fluid src="src\assets\pexels-kai-pilger-996329.webp"></Image>
         </div>
 
         <div className="keen-slider__slide">
-          <Image fluid src="src\assets\pexels-terje-sollie-298863.jpg"></Image>
+          <Image fluid src="src\assets\pexels-terje-sollie-298863.webp"></Image>
         </div>
       </div>
       <div

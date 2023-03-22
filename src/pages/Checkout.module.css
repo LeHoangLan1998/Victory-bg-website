@@ -1,0 +1,97 @@
+.container {
+    border-style: solid none none;
+    border-width: 5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    
+  }
+
+  .containerSplit {
+    display: flex;
+  }
+
+  .subContainer {
+    margin: 6rem;
+    padding: 3rem;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: left;
+  }
+
+  .fieldHolder {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+  
+  .cartItem {
+    display: flex;
+    gap: 2rem;
+    border-bottom: 1px solid black;
+    padding: 1rem 0;
+  }
+  
+  .container img {
+    max-width: 60px;
+  }
+
+  .priceTag {
+    margin-left: auto;
+    margin-top: auto;
+  }
+
+
+  .fieldHolder {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+  
+  .container input {
+    border: 0;
+    border-bottom: 1px solid #dfdfdf;
+    outline: none;
+  }
+  
+  .container label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    cursor: text;
+    transition: .3s ease-in-out;
+  }
+  
+  .container input,
+  .container label {
+    font-size: 1em;
+    width: 100%;
+    height: 40px;
+  }
+  
+  .container input.password:focus+label,
+  .container input.password:valid+label,
+  .container input.email:focus+label,
+  .container input.emailInput+label {
+    color: #424242;
+    font-size: .75em;
+    top: -25px;
+    pointer-events: none;
+  }
+  
+  .container input:focus,
+  .container input:valid {
+    border-bottom: 2px solid #424242;
+  }
+  
+  .container input.passwordConf {
+    border-bottom: 1.5px solid red;
+  }
+
+  .form {
+    margin: auto 6rem;
+    max-width: 800px;
+  }

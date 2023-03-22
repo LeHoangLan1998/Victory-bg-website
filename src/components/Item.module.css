@@ -8,3 +8,11 @@
     text-transform: uppercase;
     font-size: 13px;
 }
+
+.item img {
+    transition: transform .4s ease-in-out;
+}
+
+.item img:hover {
+    transform: scale(1.2)
+}

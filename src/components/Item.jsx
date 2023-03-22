@@ -33,10 +33,12 @@ const Item = (props) => {
         className={classes.item}
         onClick={() => navigate(`/item/${data.id}`)}
       >
-        <img
-          src={`\\src\\assets\\products\\${data.imageRef}`}
-          style={{ width: "100%" }}
-        />
+        <div style={{ overflow: "hidden" }}>
+          <img
+            src={`\\src\\assets\\products\\${data.imageRef}`}
+            style={{ width: "100%" }}
+          />
+        </div>
 
         <div className={classes["item-label"]}>
           <div>{data.productName}</div>

@@ -6,6 +6,7 @@
 
 .container-custom {
     margin: 0 auto;
+    max-width: 1532px;
 }
 
 .navigation-wrapper {

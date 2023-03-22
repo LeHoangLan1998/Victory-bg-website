@@ -19,6 +19,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { useState, useEffect } from "react";
 import { db } from "./firebase-config";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+import Checkout from "./pages/Checkout";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -50,7 +51,8 @@ export default function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<ShoppingCart />} />
-            <Route path="*" element={<MainPage firestoreData={products}/>} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="*" element={<MainPage firestoreData={products} />} />
           </Route>
         </Routes>
       </BrowserRouter>

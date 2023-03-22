@@ -17,7 +17,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate("/home");
+        navigate("/");
         console.log(user);
       })
       .catch((error) => {
@@ -62,6 +62,7 @@ const Login = () => {
                 type="password"
                 value={password}
                 required
+                autoComplete="on"
                 className={classes.password}
                 onChange={(e) => setPassword(e.target.value)}
               />
