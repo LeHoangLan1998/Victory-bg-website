@@ -2,6 +2,8 @@ import { useEffect, useContext, useState } from "react";
 import classes from "./ShoppingCart.module.css";
 import { ShopContext } from "../context/shop-context";
 import { Plus, Minus } from "phosphor-react";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 const ShoppingCart = () => {
   const {
@@ -13,6 +15,7 @@ const ShoppingCart = () => {
     totalPrice,
   } = useContext(ShopContext);
 
+  const navigate = useNavigate();
   const [cartInventory, setcartInventory] = useState({});
 
   useEffect(() => {
@@ -71,6 +74,28 @@ const ShoppingCart = () => {
         <div style={{ textAlign: "right" }}>
           Финална цена: {totalPrice(cartItems, cartItemsData).toFixed(2)} лв.
         </div>
+      </div>
+
+      <style type="text/css">
+        {`
+    .btn-lg {
+      --bs-btn-font-size: 1.rem;
+      --bs-btn-border-radius: 0;
+      width: 30%    
+    }
+    `}
+      </style>
+      <div style={{ textAlign: "center" }}>
+        <Button
+          variant="outline-dark"
+          size="lg"
+          onClick={() => {
+            navigate("/checkout");
+          }}
+          disabled = {Object.keys(cartItems).length === 0 ? true : false}
+        >
+          Финализиране на поръчката
+        </Button>
       </div>
     </div>
   );

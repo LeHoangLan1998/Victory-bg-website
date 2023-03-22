@@ -159,6 +159,7 @@ const ProductsListPage = () => {
               position: "relative",
               zIndex: refinementWindow ? 1 : -1,
               height: refinementWindow ? "auto" : "0px",
+              marginBottom: refinementWindow ? "3rem": 0,
             }}
           >
             <p>Размери:</p>
