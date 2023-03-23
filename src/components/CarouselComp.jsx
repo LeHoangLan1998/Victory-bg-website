@@ -57,13 +57,13 @@ const CarouselComp = () => {
           <Image fluid src="src\assets\pexels-neosiam-603022.webp"></Image>
         </div>
 
-        <div className="keen-slider__slide">
+        {/* <div className="keen-slider__slide">
           <Image fluid src="src\assets\pexels-kai-pilger-996329.webp"></Image>
         </div>
 
         <div className="keen-slider__slide">
           <Image fluid src="src\assets\pexels-terje-sollie-298863.webp"></Image>
-        </div>
+        </div> */}
       </div>
       <div
         className="flex-container"

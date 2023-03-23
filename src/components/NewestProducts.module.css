@@ -1,7 +1,10 @@
 .container {
     background-color: #f4fafb;
-    padding: 150px 60px;
+    padding: 50px 60px;
     margin: 60px 0;
+    -webkit-box-shadow: inset 0px 0px 25px -15px rgba(44, 45, 49, 0.7);
+    -moz-box-shadow: inset 0px 0px 25px -15px rgba(44, 45, 49, 0.7);
+    box-shadow: inset 0px 0px 25px -15px rgba(44, 45, 49, 0.7);
 }
 
 .container-custom {
