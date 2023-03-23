@@ -1,0 +1,17 @@
+.logo {
+    width: 65px;
+    margin-left: 15px;
+    margin-top: 2px;
+    cursor: pointer;
+
+}
+
+.logo:hover {
+    -webkit-box-shadow: 10px 11px 38px -22px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 11px 38px -22px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 11px 38px -22px rgba(0, 0, 0, 0.75);
+
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+}

@@ -10,6 +10,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect, useContext } from "react";
 import { ShopContext } from "../context/shop-context";
+import classes from "./NavBar.module.css";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -117,12 +118,7 @@ const NavBar = () => {
           >
             <img
               src={logo}
-              style={{
-                width: "65px",
-                marginLeft: "15px",
-                marginTop: "2px",
-                cursor: "pointer",
-              }}
+              className={classes.logo}
             ></img>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -141,6 +141,7 @@ const ProductsListPage = () => {
           </div>
 
           <div
+            className={classes.searchBar}
             style={{
               backgroundColor: "#f4fafb",
               padding: "3rem",
