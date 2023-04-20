@@ -48,46 +48,35 @@ const CarouselComp = () => {
 
   return (
     <div className={classes.carouselContainer}>
-      <div
-        ref={sliderRef}
-        className="keen-slider"
-        style={{ maxHeight: "85vh" }}
-      >
+      <div ref={sliderRef} className={`keen-slider ${classes.keenSlider}`}>
         <div className="keen-slider__slide">
           <Image fluid src="src\assets\pexels-neosiam-603022.webp"></Image>
         </div>
 
-        {/* <div className="keen-slider__slide">
+        <div className="keen-slider__slide">
           <Image fluid src="src\assets\pexels-kai-pilger-996329.webp"></Image>
         </div>
 
         <div className="keen-slider__slide">
           <Image fluid src="src\assets\pexels-terje-sollie-298863.webp"></Image>
-        </div> */}
+        </div>
       </div>
-      <div
-        className="flex-container"
-        style={{
-          position: "absolute",
-          top: "40%",
-          width: "100%",
-          flexDirection: "column",
-          pointerEvents: "none",
-        }}
-      >
-        <p style={{ fontSize: "4rem" }}>
+      <div className={classes.carouselHeading}>
+        <p>
           Добре дошли във{" "}
-          <span className="carousel-title">Victory online!</span>
+          <span className={classes["carousel-title"]}>Victory online!</span>
         </p>
-        <p style={{ fontSize: "2rem" }}>
+        <p>
           дънки, панталони и дрехи във всякакви размери
         </p>
         <div>
           <Button
             variant="outline-light"
             size="lg"
-            style={{ width: "15%", pointerEvents: "auto", }}
-            onClick={()=> {navigate("/products")}}
+            style={{ width: "15%", pointerEvents: "auto" }}
+            onClick={() => {
+              navigate("/products");
+            }}
           >
             ПАЗАРУВАЙТЕ СЕГА
           </Button>

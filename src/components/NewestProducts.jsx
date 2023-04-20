@@ -5,11 +5,30 @@ import "keen-slider/keen-slider.min.css";
 import { useEffect, useState } from "react";
 
 const NewestProducts = (props) => {
+  //screen size
+  const [windowSize, setWindowSize] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ]);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+  //////////////////////////////////////////////////////////
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     slides: {
-      perView: 3,
+      perView: windowSize[0] > 1000 ? 3 : 1,
       spacing: 15,
     },
     initial: 0,
@@ -21,15 +40,10 @@ const NewestProducts = (props) => {
     },
   });
 
-  /* const [products, setproducts] = useState([]);
-
-  setproducts(props.products); */
-
   const products = props.products;
 
   return (
     <div className={classes.container}>
-      {console.log(products)}
       <div className={classes["container-custom"]}>
         <h1 style={{ marginBottom: "60px", fontWeight: "100" }}>
           Нови артикули:

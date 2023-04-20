@@ -84,6 +84,12 @@ const ProductsListPage = () => {
               grid-template-columns: repeat(${gridColumns}, 1fr)
             }
 
+            @media (max-width: 1000px) {
+              .ais-Hits-list {
+                grid-template-columns: repeat(1, 1fr);
+              }
+            }
+
             .ais-Highlight-highlighted {
               font-size: 13px;
             }
@@ -104,7 +110,7 @@ const ProductsListPage = () => {
         </style>
       }
 
-      <div style={{ borderStyle: "solid none none", borderWidth: "5rem" }}>
+      <div style={{ borderStyle: "solid none none", borderWidth: "5rem", borderColor: "#7F7F7F" }}>
         <InstantSearch
           searchClient={searchClient}
           indexName="algolia-product-index"
@@ -160,7 +166,7 @@ const ProductsListPage = () => {
               position: "relative",
               zIndex: refinementWindow ? 1 : -1,
               height: refinementWindow ? "auto" : "0px",
-              marginBottom: refinementWindow ? "3rem": 0,
+              marginBottom: refinementWindow ? "3rem" : 0,
             }}
           >
             <p>Размери:</p>
