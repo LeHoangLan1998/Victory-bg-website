@@ -9,7 +9,6 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    height: 85vh;
 }
 
 .carousel2 {
@@ -17,7 +16,6 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    height: 85vh;
 }
 
 .carousel3 {
@@ -25,5 +23,37 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    height: 85vh;
+}
+
+.carouselHeading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    bottom: 0%;
+    flex-direction: column;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.carouselHeading p {
+    font-size: 4rem;
+}
+
+.keenSlider {
+    max-height: 85vh;
+}
+
+.carousel-title {
+    font-style: italic;
+    font-family: "Satisfy";
+    text-shadow: 2px 2px 3px rgb(33 33 33 / 100%);
+}
+
+@media (max-width: 1000px) {
+    .carouselHeading p {
+        font-size: 2rem;
+    }
 }

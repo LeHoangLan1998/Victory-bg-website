@@ -1,5 +1,6 @@
 .infoBar {
-  background-color: black;
+  background-color: #595959;
+
   color: white;
   display: flex;
   justify-content: space-around;
