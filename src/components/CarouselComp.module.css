@@ -1,0 +1,59 @@
+.carouselContainer {
+    color: #fff;
+    text-shadow: 2px 2px 3px rgb(33 33 33 / 50%);
+    position: relative;
+}
+
+.carousel1 {
+    background-image: url('src/assets/pexels-neosiam-603022.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.carousel2 {
+    background-image: url('src/assets/pexels-kai-pilger-996329.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.carousel3 {
+    background-image: url('src/assets/pexels-terje-sollie-298863.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.carouselHeading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    bottom: 0%;
+    flex-direction: column;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.carouselHeading p {
+    font-size: 4rem;
+}
+
+.keenSlider {
+    max-height: 85vh;
+}
+
+.carousel-title {
+    font-style: italic;
+    font-family: "Satisfy";
+    text-shadow: 2px 2px 3px rgb(33 33 33 / 100%);
+}
+
+@media (max-width: 1000px) {
+    .carouselHeading p {
+        font-size: 2rem;
+    }
+}

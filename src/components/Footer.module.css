@@ -1,0 +1,23 @@
+.footer {
+    width: 100%;
+    background-color: #595959;
+    color: white;
+    /* height: 30vh; */
+
+    display: flex;
+    justify-content: space-around;
+
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: flex;
+    align-items:flex-start;
+}

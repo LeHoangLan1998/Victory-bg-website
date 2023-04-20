@@ -1,0 +1,23 @@
+.hit-container img {
+  transition: transform .4s ease-in-out;
+}
+
+.hit-container img:hover {
+  transform: scale(1.2);
+}
+
+.hit-container {
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchBar {
+  background-color: #f4fafb;
+  padding: 3rem;
+  margin-bottom: 2.5rem;
+  -webkit-box-shadow: inset 0px 0px 25px -15px rgba(44, 45, 49, 0.7);
+  -moz-box-shadow: inset 0px 0px 25px -15px rgba(44, 45, 49, 0.7);
+  box-shadow: inset 0px 0px 25px -15px rgba(44, 45, 49, 0.7);
+}

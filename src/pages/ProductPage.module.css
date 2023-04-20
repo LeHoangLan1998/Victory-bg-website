@@ -1,0 +1,38 @@
+.container {
+  border-style: solid none none;
+  border-width: 5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  text-align: left;
+}
+
+.grid-container-product {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-height: 70%;
+}
+
+.size-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.image {
+  padding: 0 10%;
+  max-height: 80vh;
+}
+
+.details-container {
+  margin-right: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+}
