@@ -30,16 +30,21 @@
     flex-wrap: wrap;
     justify-content: space-around;
     position: absolute;
-    top: 40%;
+    top: 35%;
     width: 100%;
-    bottom: 0%;
     flex-direction: column;
     pointer-events: none;
     overflow: hidden;
+    font-weight: 100;
 }
 
 .carouselHeading p {
     font-size: 4rem;
+}
+
+.carouselHeadingImg {
+    max-width: 100%;
+    height: auto;
 }
 
 .keenSlider {
@@ -52,8 +57,26 @@
     text-shadow: 2px 2px 3px rgb(33 33 33 / 100%);
 }
 
+.carouselButton {
+    width: 15%;
+    pointer-events: auto
+}
+
 @media (max-width: 1000px) {
     .carouselHeading p {
         font-size: 2rem;
+    }
+
+    .carouselHeading {
+        top: 25%;
+    }
+
+    .carouselHeadingImg {
+        height: auto;
+        max-width: fit-content;
+    }
+
+    .carouselButton {
+        width: auto;
     }
 }

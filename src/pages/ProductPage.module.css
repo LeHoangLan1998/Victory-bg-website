@@ -36,3 +36,16 @@
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 1000px) {
+  .grid-container-product {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .details-container {
+    text-align: center;
+    margin: auto;
+  }
+  .size-container {
+    justify-content: center;
+  }
+}

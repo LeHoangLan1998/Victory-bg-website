@@ -50,15 +50,15 @@ const CarouselComp = () => {
     <div className={classes.carouselContainer}>
       <div ref={sliderRef} className={`keen-slider ${classes.keenSlider}`}>
         <div className="keen-slider__slide">
-          <Image fluid src="src\assets\pexels-neosiam-603022.webp"></Image>
+          <img className={classes.carouselHeadingImg} src="src\assets\pexels-neosiam-603022.webp"></img>
         </div>
 
         <div className="keen-slider__slide">
-          <Image fluid src="src\assets\pexels-kai-pilger-996329.webp"></Image>
+          <img className={classes.carouselHeadingImg} src="src\assets\pexels-kai-pilger-996329.webp"></img>
         </div>
 
         <div className="keen-slider__slide">
-          <Image fluid src="src\assets\pexels-terje-sollie-298863.webp"></Image>
+          <img className={classes.carouselHeadingImg} src="src\assets\pexels-terje-sollie-298863.webp"></img>
         </div>
       </div>
       <div className={classes.carouselHeading}>
@@ -73,7 +73,7 @@ const CarouselComp = () => {
           <Button
             variant="outline-light"
             size="lg"
-            style={{ width: "15%", pointerEvents: "auto" }}
+            className={classes.carouselButton}
             onClick={() => {
               navigate("/products");
             }}
