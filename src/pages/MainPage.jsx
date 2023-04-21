@@ -15,7 +15,7 @@ function MainPage(props) {
         </div>
         <div className={classes["info-element"]}>
           <ArrowUDownLeft color="white" size="1rem" />{" "}
-          <p>30 дни право на връщане</p>
+          <p>14 дни право на връщане</p>
         </div>
         <div className={classes["info-element"]}>
           <PhoneCall color="white" size="1rem" />{" "}
